@@ -1,0 +1,16 @@
+server:
+  port: 8088
+  path: /hello
+
+person:
+  lastName: zhangsan
+  age: 18
+  boss: false
+  birth: 2020/2/9
+  maps: {k1: v1,k2: v2}
+  lists:
+    - lisi
+    - wanger
+  dog:
+    name: hape
+    age: 2
