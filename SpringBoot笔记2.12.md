@@ -471,3 +471,19 @@ SpringBoot推荐给容器中添加组件的方式：推荐使用全注解方式
 
 
 ##### 2.占位符获取之前配置的值，如果没有则可以使用：指定默认值
+
+> ```yml
+> person:
+>   lastName: 张三${random.uuid}
+>   age: 18
+>   boss: false
+>   birth: 2020/2/9
+>   maps: {k1: v1,k2: v2}
+>   lists:
+>     - lisi
+>     - wanger
+>   dog:
+>     name: ${person.lastName}_hape
+>     age: ${person.hello:1}2
+> ```
+
