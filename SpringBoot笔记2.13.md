@@ -487,3 +487,89 @@ SpringBoot推荐给容器中添加组件的方式：推荐使用全注解方式
 >     age: ${person.hello:1}2
 > ```
 
+
+
+### 5. Profile
+
+Profile是Spring对不同环境提供不同配置功能的支持，可以通过激活、指定参数等方式快速切换环境
+
+##### 1.多Profile文件
+
+在主配置文件编写的时候，文件名可以是application-{profile}.properties/yml
+
+默认使用application.properties/yml
+
+
+
+##### 2.yml支持多文档块方式
+
+> ```yml
+> server:
+>   port: 8088
+>   path: /hello
+> spring:
+>   profiles:
+>     active: dev
+> ---
+> server:
+>   port: 8082
+> spring:
+>   profiles: dev
+> ---
+> server:
+>   port: 8083
+> spring:
+>   profiles: prod
+> 
+> ---
+> ```
+>
+> 两个---之间是一个document，对应一个代码块
+
+##### 3.激活指定profile
+
+​	1.在主配置文件中指定要激活哪个环境配置文件：
+
+> ```yml
+> spring:
+>   profiles:
+>     active: dev
+> ```
+
+ 2. 命令行方式：--spring.profiles.active=dev
+
+ 3. 虚拟机参数VM options：
+
+    -Dspring.profiles.active = dev
+
+
+
+### 6. 配置文件加载位置
+
+Spring boot启动会扫描一下位置的application.properties或者application.yml文件作为Springboot的默认配置文件
+
+优先级从高到低：
+
+**-file:./config/**
+
+**-file:./**
+
+**-classpath:/config/**
+
+**-classpath:/**
+
+**所有位置**的文件都会被加载（互补配置），**高优先级配置内容会覆盖低优先级配置内容。**
+
+我们也可以通过**spring.config.location**来改变默认配置
+
+项目打包好以后，可以使用命令行参数的形式，启动项目的时候来指定配置文件的新位置，指定配置文件和默认加载的这些配置文件共同起作用形成互补配置。
+
+
+
+
+
+### 7.外部配置加载顺序（参见springboot官方文档）
+
+
+
+## 3.自动配置的原理
