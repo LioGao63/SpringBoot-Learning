@@ -1,0 +1,32 @@
+server:
+  port: 8088
+  path: /hello
+spring:
+  profiles:
+    active: dev
+---
+server:
+  port: 8082
+spring:
+  profiles: dev
+---
+server:
+  port: 8083
+spring:
+  profiles: prod
+
+---
+
+person:
+  lastName: 张三${random.uuid}
+  age: 18
+  boss: false
+  birth: 2020/2/9
+  maps: {k1: v1,k2: v2}
+  lists:
+    - lisi
+    - wanger
+  dog:
+    name: ${person.lastName}_hape
+    age: ${person.hello:1}2
+
