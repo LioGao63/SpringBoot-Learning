@@ -1606,7 +1606,7 @@ JSP、Velocity、Freemarker、Thymeleaf
 
 ​	禁用模板引擎的缓存，修改后ctrl+F9，重新编译
 
-LoginController
+**LoginController**
 
 > ```java
 > @Controller
@@ -1631,7 +1631,7 @@ LoginController
 
 
 
-错误提示：
+**错误提示：**
 
 > ```html
 > <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
@@ -1639,5 +1639,124 @@ LoginController
 
 
 
-**拦截器机制做登录检查：**
+#### **4.拦截器机制做登录检查：**
+
+> ```java
+> @Override
+> public void addInterceptors(InterceptorRegistry registry) {
+>     //静态资源：*css, *js不需要管，SpringBoot已经做好静态资源映射
+>     registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+>             .excludePathPatterns("/index.html","/","/user/login","/assert/css/**","/webjars/**");
+> }
+> ```
+
+
+
+#### 5. CRUD-员工列表
+
+##### 1.RestfulCRUD:CRUD满足Rest风格
+
+​	URI:/资源名称/资源标识		HTTP请求方式区分对资源的CRUD操作
+
+|      | 普通CRUD(URI区分操作)   | RestfulCRUD       |
+| ---- | ----------------------- | ----------------- |
+| 查询 | getEmp                  | emp---GET         |
+| 添加 | addEmp?xxx              | emp---POST        |
+| 修改 | updateEmp?id=xxx&xxx=xx | emp/{id}---PUT    |
+| 删除 | deleteEmp?id=1          | emp/{id}---DELETE |
+
+##### 2.实验的请求架构：
+
+|                            | 请求的URI | 请求方式 |
+| -------------------------- | --------- | -------- |
+| 查询所有员工               | emps      | GET      |
+| 查询某个员工               | emp/{id}  | GET      |
+| 转跳到添加页面             | emp       | GET      |
+| 添加员工                   | emp       | POST     |
+| 转跳到修改页面（先查后写） | emp/{id}  | GET      |
+| 修改员工                   | emp       | PUT      |
+| 删除员工                   | emp/{id}  | DELETE   |
+
+**3.员工列表**
+
+> ```java
+> @Controller
+> public class EmployeeController {
+> 
+>     @Autowired
+>     EmployeeDao employeeDao;
+> 
+>     //查询所有员工返回列表页面
+>     @GetMapping("/emps")
+>     public String list(Model model){
+>         Collection<Employee> employees = employeeDao.getAll();
+> 
+>         //放在请求域中
+>         model.addAttribute("emps", employees);
+> 
+>         return "emp/list";
+>     }
+> 
+> }
+> ```
+
+
+
+Thymeleaf公共页面元素抽取：
+
+```html
+1.抽取公共片段
+<div th:fragment="copy"> 
+    &copy; 2011 The Good Thymes Virtual Grocery 
+</div>
+
+2.引入公共片段
+<div th:insert="~{footer :: copy}"></div>
+~{templatename::selector}--模板名::选择器
+~{templatename::fragmentname}--模板名::片段名
+
+3.默认效果：
+insert的公共片段在div标签中
+```
+
+三种引入公共片段的th属性：
+
+**th:insert**：将公共片段整体插入到声明引入的元素中
+
+**th:replace**：将声明引入的元素替换为公共片段
+
+**th:include**：将被引入的片段内容包含进标签中
+
+```html
+<div th:fragment="copy"> 
+    &copy; 2011 The Good Thymes Virtual Grocery 
+</div>
+
+<div th:insert="footer :: copy"></div> 
+<div th:replace="footer :: copy"></div> 
+<div th:include="footer :: copy"></div>
+
+效果：
+<div> 
+    <footer> 
+        &copy; 2011 The Good Thymes Virtual Grocery 
+    </footer> 
+</div>
+
+<footer> 
+    &copy; 2011 The Good Thymes Virtual Grocery 
+</footer>
+
+<div> 
+    &copy; 2011 The Good Thymes Virtual Grocery 
+</div>
+```
+
+
+
+**引入片段的时候传入参数：**
+
+```html
+<div th:replace="commons/bar::#sidebar(activeUri='emps')"></div>
+```
 

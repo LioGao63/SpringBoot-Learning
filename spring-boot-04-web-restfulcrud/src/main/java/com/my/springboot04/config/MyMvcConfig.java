@@ -29,15 +29,20 @@ public class MyMvcConfig implements WebMvcConfigurer {
             public void addViewControllers(ViewControllerRegistry registry) {
                 registry.addViewController("/").setViewName("login");
                 registry.addViewController("/index.html").setViewName("login");
-                registry.addViewController("/main.html").setViewName("dashboard");
+                registry.addViewController("/main.html").setViewName("main");
             }
+
+//            @Override
+//            public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//                registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/**");
+//            }
 
             //注册拦截器
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 //静态资源：*css, *js不需要管，SpringBoot已经做好静态资源映射
                 registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                        .excludePathPatterns("/index.html","/","/user/login","/assert/css/**","/webjars/**");
+                        .excludePathPatterns("/index.html","/","/user/login","/asserts/**","/webjars/**");
             }
         };
         return configurer;
