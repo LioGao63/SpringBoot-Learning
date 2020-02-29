@@ -1728,7 +1728,7 @@ insert的公共片段在div标签中
 **th:include**：将被引入的片段内容包含进标签中
 
 ```html
-<div th:fragment="copy"> 
+<footer th:fragment="copy"> 
     &copy; 2011 The Good Thymes Virtual Grocery 
 </div>
 
@@ -1760,3 +1760,369 @@ insert的公共片段在div标签中
 <div th:replace="commons/bar::#sidebar(activeUri='emps')"></div>
 ```
 
+
+
+
+
+员工信息添加的小问题：
+
+​	生日日期格式：2000-1-1； 2000/1/1;  2000.1.1
+
+​	默认日期是/ /形式
+
+​	
+
+#### 6. CRUD-员工添加
+
+添加页面
+
+```html
+<form>
+    <div class="form-group">
+        <label>LastName</label>
+        <input type="text" class="form-control" placeholder="zhangsan">
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" placeholder="zhangsan@atguigu.com">
+    </div>
+    <div class="form-group">
+        <label>Gender</label><br/>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender"  value="1">
+            <label class="form-check-label">男</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender"  value="0">
+            <label class="form-check-label">女</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>department</label>
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Birth</label>
+        <input type="text" class="form-control" placeholder="zhangsan">
+    </div>
+    <button type="submit" class="btn btn-primary">添加</button>
+</form>
+```
+
+提交的数据格式不对：生日：日期；
+
+2017-12-12；2017/12/12；2017.12.12；
+
+日期的格式化；SpringMVC将页面提交的值需要转换为指定的类型;
+
+2017-12-12---Date； 类型转换，格式化;
+
+默认日期是按照/的方式；
+
+#### 7. CRUD-员工修改
+
+修改添加二合一表单
+
+```html
+<!--需要区分是员工修改还是添加；-->
+<form th:action="@{/emp}" method="post">
+    <!--发送put请求修改员工数据-->
+    <!--
+1、SpringMVC中配置HiddenHttpMethodFilter;（SpringBoot自动配置好的）
+2、页面创建一个post表单
+3、创建一个input项，name="_method";值就是我们指定的请求方式
+-->
+    <input type="hidden" name="_method" value="put" th:if="${emp!=null}"/>
+    <input type="hidden" name="id" th:if="${emp!=null}" th:value="${emp.id}">
+    <div class="form-group">
+        <label>LastName</label>
+        <input name="lastName" type="text" class="form-control" placeholder="zhangsan" th:value="${emp!=null}?${emp.lastName}">
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input name="email" type="email" class="form-control" placeholder="zhangsan@atguigu.com" th:value="${emp!=null}?${emp.email}">
+    </div>
+    <div class="form-group">
+        <label>Gender</label><br/>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" value="1" th:checked="${emp!=null}?${emp.gender==1}">
+            <label class="form-check-label">男</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" value="0" th:checked="${emp!=null}?${emp.gender==0}">
+            <label class="form-check-label">女</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>department</label>
+        <!--提交的是部门的id-->
+        <select class="form-control" name="department.id">
+            <option th:selected="${emp!=null}?${dept.id == emp.department.id}" th:value="${dept.id}" th:each="dept:${depts}" th:text="${dept.departmentName}">1</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Birth</label>
+        <input name="birth" type="text" class="form-control" placeholder="zhangsan" th:value="${emp!=null}?${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}">
+    </div>
+    <button type="submit" class="btn btn-primary" th:text="${emp!=null}?'修改':'添加'">添加</button>
+</form>
+```
+
+#### 8. CRUD-员工删除
+
+```html
+<tr th:each="emp:${emps}">
+    <td th:text="${emp.id}"></td>
+    <td>[[${emp.lastName}]]</td>
+    <td th:text="${emp.email}"></td>
+    <td th:text="${emp.gender}==0?'女':'男'"></td>
+    <td th:text="${emp.department.departmentName}"></td>
+    <td th:text="${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}"></td>
+    <td>
+        <a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>
+        <button th:attr="del_uri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>
+    </td>
+</tr>
+
+
+<script>
+    $(".deleteBtn").click(function(){
+        //删除当前员工的
+        $("#deleteEmpForm").attr("action",$(this).attr("del_uri")).submit();
+        return false;
+    });
+</script>
+```
+
+
+
+### 7.错误处理机制
+
+#### 1.SpringBoot默认的错误处理机制
+
+默认效果：
+
+​	1）返回一个默认的错误页面
+
+![image-20200227111853821](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20200227111853821.png)
+
+​	2）如果是其他客户端，默认响应一个json数据
+
+
+
+**原理**：（参照SpringBoot自动配置ErrorMvcAutoConfiguration）
+
+​	给容器添加了以下组件：
+
+​	1.DefaultErrorAttributes（在页面共享信息）	
+
+```java
+public Map<String, Object> getErrorAttributes(ServerRequest request, boolean includeStackTrace) {
+        Map<String, Object> errorAttributes = new LinkedHashMap();
+        errorAttributes.put("timestamp", new Date());
+        errorAttributes.put("path", request.path());
+        Throwable error = this.getError(request);
+        MergedAnnotation<ResponseStatus> responseStatusAnnotation = MergedAnnotations.from(error.getClass(), SearchStrategy.TYPE_HIERARCHY).get(ResponseStatus.class);
+        HttpStatus errorStatus = this.determineHttpStatus(error, responseStatusAnnotation);
+        errorAttributes.put("status", errorStatus.value());
+        errorAttributes.put("error", errorStatus.getReasonPhrase());
+        errorAttributes.put("message", this.determineMessage(error, responseStatusAnnotation));
+        errorAttributes.put("requestId", request.exchange().getRequest().getId());
+        this.handleException(errorAttributes, this.determineException(error), includeStackTrace);
+        return errorAttributes;
+    }
+```
+
+
+
+2. BasicErrorController
+
+   ```java
+   @Controller //处理默认/error请求
+   @RequestMapping({"${server.error.path:${error.path:/error}}"})
+   public class BasicErrorController extends AbstractErrorController {
+       
+       @RequestMapping(
+           produces = {"text/html"}//产生html类型的处理；浏览器发送的请求来到这个方法处理
+       )
+       public ModelAndView errorHtml(HttpServletRequest request, HttpServletResponse response) {
+           HttpStatus status = this.getStatus(request);
+           Map<String, Object> model = Collections.unmodifiableMap(this.getErrorAttributes(request, this.isIncludeStackTrace(request, MediaType.TEXT_HTML)));
+           response.setStatus(status.value());
+           
+           //决定去哪个页面作为错误页面，包含页面地址和页面内容
+           ModelAndView modelAndView = this.resolveErrorView(request, response, status, model);
+           return modelAndView != null ? modelAndView : new ModelAndView("error", model);
+       }
+   
+       @RequestMapping //产生json数据，其他客户端来到这个方法处理
+       public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
+           HttpStatus status = this.getStatus(request);
+           if (status == HttpStatus.NO_CONTENT) {
+               return new ResponseEntity(status);
+           } else {
+               Map<String, Object> body = this.getErrorAttributes(request, this.isIncludeStackTrace(request, MediaType.ALL));
+               return new ResponseEntity(body, status);
+           }
+       }
+   ```
+
+   
+
+  3. ErrorPageCustomizer
+
+     ```java
+     @Value("${error.path:/error}")
+     private String path = "/error";系统出现错误以后来到error请求进行处理
+     ```
+
+  4. DefaultErrorViewResolverConfiguration
+
+     ```java
+         public ModelAndView resolveErrorView(HttpServletRequest request, HttpStatus status, Map<String, Object> model) {
+             ModelAndView modelAndView = this.resolve(String.valueOf(status.value()), model);
+             if (modelAndView == null && SERIES_VIEWS.containsKey(status.series())) {
+                 modelAndView = this.resolve((String)SERIES_VIEWS.get(status.series()), model);
+             }
+     
+             return modelAndView;
+         }
+     
+         private ModelAndView resolve(String viewName, Map<String, Object> model) {
+             //默认springboot可以去找到某个页面-->error/{状态码}
+             String errorViewName = "error/" + viewName;
+             //用模板引擎解析
+             TemplateAvailabilityProvider provider = this.templateAvailabilityProviders.getProvider(errorViewName, this.applicationContext);
+             
+             //模板引擎不可用，就在静态资源文件夹下找errorViewName对应的页面 error/404.html
+             return provider != null ? new ModelAndView(errorViewName, model) : this.resolveResource(errorViewName, model);
+         }
+     
+     ```
+
+     
+
+**步骤：**
+
+​	一旦系统出现4xx或者5xx之类的错误，**ErrorPageCustomizer**就会生效（定制错误的响应规则），就会来到/error请求，接着会被**BasicErrorController**处理
+
+​	1）响应页面（去哪个页面由DefaultErrorViewResolver解析）
+
+```java
+    protected ModelAndView resolveErrorView(HttpServletRequest request, HttpServletResponse response, HttpStatus status, Map<String, Object> model) {
+        Iterator var5 = this.errorViewResolvers.iterator();
+
+        ModelAndView modelAndView;
+        do {
+            if (!var5.hasNext()) {
+                return null;
+            }
+
+            ErrorViewResolver resolver = (ErrorViewResolver)var5.next();
+            modelAndView = resolver.resolveErrorView(request, status, model);
+        } while(modelAndView == null);
+
+        return modelAndView;
+    }
+```
+
+
+
+#### 2.如何定制错误响应
+
+##### 	1.如果定制错误的页面
+
+​		1）**有模板引擎情况下**：templates/error/{状态码} ,产生此状态码的错误就会转跳到对应的页面
+
+​		页面能获取的信息：
+
+​	timestamp（时间戳），path（路径），status（状态码），error（错误提示），message（错误消息），requestId（请求ID）
+
+
+
+​		2）**没有模板引擎情况下**（模板引擎找不到错误页面）：静态资源文件夹下找
+
+​		3）以上都没有错误页面，默认来到springboot默认的错误页面
+
+
+
+##### 	2.如何定制错误的json数据
+
+​		1）自定义异常处理&返回定制json数据
+
+```java
+@ControllerAdvice
+public class MyExceptionHandler {
+
+    @ResponseBody
+    @ExceptionHandler(UserNotExitException.class)
+    public Map<String, Object> handleException(Exception e){
+        Map<String, Object> map = new HashMap<>();
+        map.put("code", "user.notexist");
+        map.put("message", e.getMessage());
+        return map;
+    }
+}
+//没有自适应效果
+```
+
+​	2）转发到/error进行自适应响应
+
+```java
+
+    @ResponseBody
+    @ExceptionHandler(UserNotExitException.class)
+    public String handleException(Exception e){
+        Map<String, Object> map = new HashMap<>();
+        map.put("code", "user.notexist");
+        map.put("message", e.getMessage());
+        //转发到error
+        return "forward:/error";
+    }
+```
+
+```java
+//@ResponseBody 转发或者重定向不可以有这个注释 不然会显示字符串
+ @ExceptionHandler(UserNotExitException.class)
+    public String handleException(Exception e, HttpServletRequest request){
+        Map<String, Object> map = new HashMap<>();
+        //传入我们自己的错误状态码
+        request.setAttribute("javax.servlet.error.status_code", 500);
+        //要设置状态码，不然不会进入定制页面的解析
+        map.put("code", "user.notexist");
+        map.put("message", e.getMessage());
+        //转发到error
+        return "forward:/error";
+    }
+```
+
+3）**将我们的定制数据携带出去**
+
+出现错误以后，会来到/error请求，这个请求会被BasicErrorController处理，响应出去可以获取的数据是由getErrorAttributes得到（是AbstractErrorController（ErrorController）规定的方法）
+
+​	1.可以完全来编写一个ErrorController的实现类（或者编写AbstractErrorController的子类）
+
+​	2.页面上能用的数据，或者是json返回能用的数据都是通过ErrorAttributes.getErrorAttributes得到。容器中DefaultErrorAttributes默认进行数据处理的
+
+
+
+自定义ErrorAttributes
+
+```java
+@Component
+public class MyErrorAttributes extends DefaultErrorAttributes {
+    @Override
+    public Map<String, Object> getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
+        Map<String, Object> map = super.getErrorAttributes(webRequest, includeStackTrace);
+        map.put("school", "SCU");
+        return map;
+    }
+```
+
+**最终效果**：响应是自适应的，可以通过定制ErrorAttributes改变需要返回的内容
