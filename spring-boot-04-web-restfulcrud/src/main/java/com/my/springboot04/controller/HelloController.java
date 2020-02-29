@@ -1,8 +1,10 @@
 package com.my.springboot04.controller;
 
 
+import com.my.springboot04.exception.UserNotExitException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +22,10 @@ public class HelloController {
 
     @ResponseBody
     @RequestMapping("/hello")
-    public String hello(){
+    public String hello(@RequestParam("user") String user){
+        if(user.equals("aaa")){
+            throw new UserNotExitException();
+        }
         return "Hello World!";
     }
 
