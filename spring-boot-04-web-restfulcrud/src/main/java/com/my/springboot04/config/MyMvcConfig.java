@@ -3,6 +3,8 @@ package com.my.springboot04.config;
 
 import com.my.springboot04.component.LoginHandlerInterceptor;
 import com.my.springboot04.component.MyLocaleResolver;
+import org.springframework.boot.web.server.ConfigurableWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,6 +16,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //使用WebMvcConfigurer可以扩展
 @Configuration
 public class MyMvcConfig implements WebMvcConfigurer {
+
+
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         //浏览器发送/my， 请求来到success页面
