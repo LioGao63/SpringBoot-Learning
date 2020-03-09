@@ -1,3 +1,7 @@
+xml
+
+
+
 # 一. Spring Boot入门
 
 ## 1. Spring boot Helloworld 
@@ -15,51 +19,51 @@
 > ```xml
 > <?xml version="1.0" encoding="UTF-8"?>
 > <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
->          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
->     <modelVersion>4.0.0</modelVersion>
->     <parent>
->         <groupId>org.springframework.boot</groupId>
->         <artifactId>spring-boot-starter-parent</artifactId>
->         <version>2.2.4.RELEASE</version>
->         <relativePath/> <!-- lookup parent from repository -->
->     </parent>
->     <groupId>com.my</groupId>
->     <artifactId>spring-boot-01-helloworld</artifactId>
->     <version>0.0.1-SNAPSHOT</version>
->     <name>spring-boot-01-helloworld</name>
->     <description>Demo project for Spring Boot</description>
+>       xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+>  <modelVersion>4.0.0</modelVersion>
+>  <parent>
+>      <groupId>org.springframework.boot</groupId>
+>      <artifactId>spring-boot-starter-parent</artifactId>
+>      <version>2.2.4.RELEASE</version>
+>      <relativePath/> <!-- lookup parent from repository -->
+>  </parent>
+>  <groupId>com.my</groupId>
+>  <artifactId>spring-boot-01-helloworld</artifactId>
+>  <version>0.0.1-SNAPSHOT</version>
+>  <name>spring-boot-01-helloworld</name>
+>  <description>Demo project for Spring Boot</description>
 > 
->     <properties>
->         <java.version>9.0</java.version>
->     </properties>
+>  <properties>
+>      <java.version>9.0</java.version>
+>  </properties>
 > 
->     <dependencies>
->         <dependency>
->             <groupId>org.springframework.boot</groupId>
->             <artifactId>spring-boot-starter</artifactId>
->         </dependency>
+>  <dependencies>
+>      <dependency>
+>          <groupId>org.springframework.boot</groupId>
+>          <artifactId>spring-boot-starter</artifactId>
+>      </dependency>
 > 
->         <dependency>
->             <groupId>org.springframework.boot</groupId>
->             <artifactId>spring-boot-starter-test</artifactId>
->             <scope>test</scope>
->             <exclusions>
->                 <exclusion>
->                     <groupId>org.junit.vintage</groupId>
->                     <artifactId>junit-vintage-engine</artifactId>
->                 </exclusion>
->             </exclusions>
->         </dependency>
->     </dependencies>
+>      <dependency>
+>          <groupId>org.springframework.boot</groupId>
+>          <artifactId>spring-boot-starter-test</artifactId>
+>          <scope>test</scope>
+>          <exclusions>
+>              <exclusion>
+>                  <groupId>org.junit.vintage</groupId>
+>                  <artifactId>junit-vintage-engine</artifactId>
+>              </exclusion>
+>          </exclusions>
+>      </dependency>
+>  </dependencies>
 > 
->     <build>
->         <plugins>
->             <plugin>
->                 <groupId>org.springframework.boot</groupId>
->                 <artifactId>spring-boot-maven-plugin</artifactId>
->             </plugin>
->         </plugins>
->     </build>
+>  <build>
+>      <plugins>
+>          <plugin>
+>              <groupId>org.springframework.boot</groupId>
+>              <artifactId>spring-boot-maven-plugin</artifactId>
+>          </plugin>
+>      </plugins>
+>  </build>
 > 
 > </project>
 > ```
@@ -91,11 +95,11 @@
 > @Controller
 > public class HelloController {
 > 
->     @ResponseBody
->     @RequestMapping("/hello")
->     public String hello(){
->         return "Hello World!";
->     }
+>  @ResponseBody
+>  @RequestMapping("/hello")
+>  public String hello(){
+>      return "Hello World!";
+>  }
 > }
 > ```
 
@@ -115,10 +119,10 @@
 
 > ```xml
 > <parent>
->     <groupId>org.springframework.boot</groupId>
->     <artifactId>spring-boot-starter-parent</artifactId>
->     <version>2.0.5.RELEASE</version>
->     <relativePath/> <!-- lookup parent from repository -->
+>  <groupId>org.springframework.boot</groupId>
+>  <artifactId>spring-boot-starter-parent</artifactId>
+>  <version>2.0.5.RELEASE</version>
+>  <relativePath/> <!-- lookup parent from repository -->
 > </parent>
 > 
 > 它的父项目是：spring-boot-dependencies 
@@ -135,8 +139,8 @@
 
 > ```xml
 > <dependency>
->     <groupId>org.springframework.boot</groupId>
->     <artifactId>spring-boot-starter-web</artifactId>
+>  <groupId>org.springframework.boot</groupId>
+>  <artifactId>spring-boot-starter-web</artifactId>
 > </dependency>
 > ```
 
@@ -178,12 +182,12 @@ Spring Boot将所有功能场景都抽取出来，做成一个个的starters（�
 > @SpringBootConfiguration
 > @EnableAutoConfiguration
 > @ComponentScan(
->     excludeFilters = {@Filter(
->     type = FilterType.CUSTOM,
->     classes = {TypeExcludeFilter.class}
+>  excludeFilters = {@Filter(
+>  type = FilterType.CUSTOM,
+>  classes = {TypeExcludeFilter.class}
 > ), @Filter(
->     type = FilterType.CUSTOM,
->     classes = {AutoConfigurationExcludeFilter.class}
+>  type = FilterType.CUSTOM,
+>  classes = {AutoConfigurationExcludeFilter.class}
 > )}
 > )
 > ```
@@ -269,8 +273,8 @@ YAML（YAML ain‘t Markup Language）
 
 > ```yml
 > server:
->   port: 8088
->   
+> port: 8088
+> 
 > ```
 
 ## 2.YAML 语法：
@@ -283,8 +287,8 @@ k: （空格）v    ： 表示一个键值对
 
 > ```yml
 > server:
->   port: 8088
->   path: /hello
+> port: 8088
+> path: /hello
 > ```
 
 属性和值对大小写敏感
@@ -311,8 +315,8 @@ k: （空格）v    ： 表示一个键值对
 
 > ```yml
 > friends:
->   lastName: zhangsan
->   age: 20
+> lastName: zhangsan
+> age: 20
 > ```
 
 ​		行内写法：
@@ -373,9 +377,9 @@ k: （空格）v    ： 表示一个键值对
 
 > ```xml
 > <dependency>
->     <groupId>org.springframework.boot</groupId>
->     <artifactId>spring-boot-configuration-processor</artifactId>
->     <optional>true</optional>
+>  <groupId>org.springframework.boot</groupId>
+>  <artifactId>spring-boot-configuration-processor</artifactId>
+>  <optional>true</optional>
 > </dependency>
 > ```
 
@@ -401,8 +405,8 @@ k: （空格）v    ： 表示一个键值对
 > @Validated //数据校验
 > public class Person {
 > 
->     @Email //要求必须是邮箱格式
->     private String lastName;
+>  @Email //要求必须是邮箱格式
+>  private String lastName;
 > ```
 
 
@@ -426,11 +430,11 @@ SpringBoot里面没有Spring的配置文件，我们自己编写的配置文件�
 > ```xml
 > <?xml version="1.0" encoding="UTF-8"?>
 > <beans xmlns="http://www.springframework.org/schema/beans"
->        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
->        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+>     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 > 
 > 
->     <bean id="helloService" class="com.my.springboot.service.HelloService"></bean>
+>  <bean id="helloService" class="com.my.springboot.service.HelloService"></bean>
 > </beans>
 > ```
 
@@ -474,12 +478,12 @@ SpringBoot推荐给容器中添加组件的方式：推荐使用全注解方式
 
 > ```yml
 > person:
->   lastName: 张三${random.uuid}
->   age: 18
->   boss: false
->   birth: 2020/2/9
->   maps: {k1: v1,k2: v2}
->   lists:
+> lastName: 张三${random.uuid}
+> age: 18
+> boss: false
+> birth: 2020/2/9
+> maps: {k1: v1,k2: v2}
+> lists:
 >     - lisi
 >     - wanger
 >   dog:
@@ -505,21 +509,21 @@ Profile是Spring对不同环境提供不同配置功能的支持，可以通过�
 
 > ```yml
 > server:
->   port: 8088
->   path: /hello
+> port: 8088
+> path: /hello
 > spring:
->   profiles:
->     active: dev
+> profiles:
+>  active: dev
 > ---
 > server:
->   port: 8082
+> port: 8082
 > spring:
->   profiles: dev
+> profiles: dev
 > ---
 > server:
->   port: 8083
+> port: 8083
 > spring:
->   profiles: prod
+> profiles: prod
 > 
 > ---
 > ```
@@ -532,8 +536,8 @@ Profile是Spring对不同环境提供不同配置功能的支持，可以通过�
 
 > ```yml
 > spring:
->   profiles:
->     active: dev
+> profiles:
+>  active: dev
 > ```
 
  2. 命令行方式：--spring.profiles.active=dev
@@ -739,18 +743,18 @@ Spring boot启动会扫描一下位置的application.properties或者application
 
 > ```java
 > @Configuration(
->     proxyBeanMethods = false
+>  proxyBeanMethods = false
 > ) //表示是一个配置类，以前编写的配置文件一样，也可以给容器中添加组件
 > @EnableConfigurationProperties({HttpProperties.class}) 
 > //启用指定类的ConfigurationProperties功能：将配置文件中的值与HttpProperties绑定起来，并把HttpProperties加入到ioc容器中
 > @ConditionalOnWebApplication(
->     type = Type.SERVLET
+>  type = Type.SERVLET
 > )//Spring底层@Conditional注解，根据不同的条件进行判断。如果满足指定条件，整个配置类里面的配置就会生效；判断当前应用是否是web应用：如果是，当前配置类生效；反之无效
 > @ConditionalOnClass({CharacterEncodingFilter.class})//判断当前项目有无这个类
 > @ConditionalOnProperty(
->     prefix = "spring.http.encoding",
->     value = {"enabled"},
->     matchIfMissing = true
+>  prefix = "spring.http.encoding",
+>  value = {"enabled"},
+>  matchIfMissing = true
 > )//判断配置文件中是否存在某个配置spring.http.encoding.enabled；如果不存在，判断也是成立
 > public class HttpEncodingAutoConfiguration {
 > ```
@@ -759,24 +763,24 @@ Spring boot启动会扫描一下位置的application.properties或者application
 
 > ```java
 > public class HttpEncodingAutoConfiguration {
->    
->     //已经和SpringBoot的配置文件映射
->     private final Encoding properties;
-> 	
->     //只有一个有参构造器的情况下，参数就会从容器中拿
->     public HttpEncodingAutoConfiguration(HttpProperties properties) {
->         this.properties = properties.getEncoding();
->     }
 > 
->     @Bean //给容器添加一个组件，这个组件的某些值需要从properties中获取
->     @ConditionalOnMissingBean
->     public CharacterEncodingFilter characterEncodingFilter() {
->         CharacterEncodingFilter filter = new OrderedCharacterEncodingFilter();
->         filter.setEncoding(this.properties.getCharset().name());
->         filter.setForceRequestEncoding(this.properties.shouldForce(org.springframework.boot.autoconfigure.http.HttpProperties.Encoding.Type.REQUEST));
->         filter.setForceResponseEncoding(this.properties.shouldForce(org.springframework.boot.autoconfigure.http.HttpProperties.Encoding.Type.RESPONSE));
->         return filter;
->     }
+>  //已经和SpringBoot的配置文件映射
+>  private final Encoding properties;
+> 	
+>  //只有一个有参构造器的情况下，参数就会从容器中拿
+>  public HttpEncodingAutoConfiguration(HttpProperties properties) {
+>      this.properties = properties.getEncoding();
+>  }
+> 
+>  @Bean //给容器添加一个组件，这个组件的某些值需要从properties中获取
+>  @ConditionalOnMissingBean
+>  public CharacterEncodingFilter characterEncodingFilter() {
+>      CharacterEncodingFilter filter = new OrderedCharacterEncodingFilter();
+>      filter.setEncoding(this.properties.getCharset().name());
+>      filter.setForceRequestEncoding(this.properties.shouldForce(org.springframework.boot.autoconfigure.http.HttpProperties.Encoding.Type.REQUEST));
+>      filter.setForceResponseEncoding(this.properties.shouldForce(org.springframework.boot.autoconfigure.http.HttpProperties.Encoding.Type.RESPONSE));
+>      return filter;
+>  }
 > ```
 
 ​	一旦这个配置类生效，这个配置类就会给容器中添加各种组件；这些组件的属性是从对应的properties类中获取的，这些类里面的每一个属性又是和配置文件绑定的
@@ -787,7 +791,7 @@ Spring boot启动会扫描一下位置的application.properties或者application
 
 > ```java
 > @ConfigurationProperties(
->     prefix = "spring.http"
+>  prefix = "spring.http"
 > ) //从配置文件中获取指定的值和bean的属性进行绑定
 > public class HttpProperties {
 > ```
@@ -908,10 +912,10 @@ SpringBoot：底层是Spring框架，Spring框架默认使用JCL
 > import org.slf4j.LoggerFactory;
 > 
 > public class HelloWorld {
->   public static void main(String[] args) {
->     Logger logger = LoggerFactory.getLogger(HelloWorld.class);
->     logger.info("Hello World");
->   }
+> public static void main(String[] args) {
+>  Logger logger = LoggerFactory.getLogger(HelloWorld.class);
+>  logger.info("Hello World");
+> }
 > }
 > 
 > ```
@@ -950,10 +954,10 @@ a系统（slf4j+logback）：Spring（commons-logging）, Hibernate（jboss-logg
 
 > ```xml
 > <dependency>
->   <groupId>org.springframework.boot</groupId>
->   <artifactId>spring-boot-starter</artifactId>
->   <version>2.2.4.RELEASE</version>
->   <scope>compile</scope>
+> <groupId>org.springframework.boot</groupId>
+> <artifactId>spring-boot-starter</artifactId>
+> <version>2.2.4.RELEASE</version>
+> <scope>compile</scope>
 > </dependency>
 > ```
 
@@ -961,10 +965,10 @@ SpringBoot使用它来做日志功能：
 
 > ```xml
 > <dependency>
->   <groupId>org.springframework.boot</groupId>
->   <artifactId>spring-boot-starter-logging</artifactId>
->   <version>2.2.4.RELEASE</version>
->   <scope>compile</scope>
+> <groupId>org.springframework.boot</groupId>
+> <artifactId>spring-boot-starter-logging</artifactId>
+> <version>2.2.4.RELEASE</version>
+> <scope>compile</scope>
 > </dependency>
 > ```
 
@@ -1002,15 +1006,15 @@ SpringBoot默认帮我们配置好了日志，可以直接使用
 > @Test
 > void contextLoads() {
 > 
->     //日志的级别：由低到高
->     //可以调整输出的日志级别，日志就只会在这个级别以后的高级别生效
->     logger.trace("这是trace日志");
->     logger.debug("这是debug日志");
+>  //日志的级别：由低到高
+>  //可以调整输出的日志级别，日志就只会在这个级别以后的高级别生效
+>  logger.trace("这是trace日志");
+>  logger.debug("这是debug日志");
 > 
->     //SpringBoot默认给我们使用的是info级别的
->     logger.info("这是info日志");
->     logger.warn("这是warn日志");
->     logger.error("这是error日志");
+>  //SpringBoot默认给我们使用的是info级别的
+>  logger.info("这是info日志");
+>  logger.warn("这是warn日志");
+>  logger.error("这是error日志");
 > 
 > }
 > ```
@@ -1082,21 +1086,21 @@ public class ResourceProperties {
 
 > ```java
 > public void addResourceHandlers(ResourceHandlerRegistry registry) {
->     if (!this.resourceProperties.isAddMappings()) {
->         logger.debug("Default resource handling disabled");
->     } else {
->         Duration cachePeriod = this.resourceProperties.getCache().getPeriod();
->         CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl();
->         if (!registry.hasMappingForPattern("/webjars/**")) {
->             this.customizeResourceHandlerRegistration(registry.addResourceHandler(new String[]{"/webjars/**"}).addResourceLocations(new String[]{"classpath:/META-INF/resources/webjars/"}).setCachePeriod(this.getSeconds(cachePeriod)).setCacheControl(cacheControl));
->         }
+>  if (!this.resourceProperties.isAddMappings()) {
+>      logger.debug("Default resource handling disabled");
+>  } else {
+>      Duration cachePeriod = this.resourceProperties.getCache().getPeriod();
+>      CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl();
+>      if (!registry.hasMappingForPattern("/webjars/**")) {
+>          this.customizeResourceHandlerRegistration(registry.addResourceHandler(new String[]{"/webjars/**"}).addResourceLocations(new String[]{"classpath:/META-INF/resources/webjars/"}).setCachePeriod(this.getSeconds(cachePeriod)).setCacheControl(cacheControl));
+>      }
 > 
->         String staticPathPattern = this.mvcProperties.getStaticPathPattern();
->         if (!registry.hasMappingForPattern(staticPathPattern)) {
->             this.customizeResourceHandlerRegistration(registry.addResourceHandler(new String[]{staticPathPattern}).addResourceLocations(WebMvcAutoConfiguration.getResourceLocations(this.resourceProperties.getStaticLocations())).setCachePeriod(this.getSeconds(cachePeriod)).setCacheControl(cacheControl));
->         }
+>      String staticPathPattern = this.mvcProperties.getStaticPathPattern();
+>      if (!registry.hasMappingForPattern(staticPathPattern)) {
+>          this.customizeResourceHandlerRegistration(registry.addResourceHandler(new String[]{staticPathPattern}).addResourceLocations(WebMvcAutoConfiguration.getResourceLocations(this.resourceProperties.getStaticLocations())).setCachePeriod(this.getSeconds(cachePeriod)).setCacheControl(cacheControl));
+>      }
 > 
->     }
+>  }
 > }
 > ```
 
@@ -1123,9 +1127,9 @@ public class ResourceProperties {
    > ```java
    > @Bean
    > public WelcomePageHandlerMapping welcomePageHandlerMapping(ApplicationContext applicationContext, FormattingConversionService mvcConversionService, ResourceUrlProvider mvcResourceUrlProvider) {
-   >     WelcomePageHandlerMapping welcomePageHandlerMapping = new WelcomePageHandlerMapping(new TemplateAvailabilityProviders(applicationContext), applicationContext, this.getWelcomePage(), this.mvcProperties.getStaticPathPattern());
-   >     welcomePageHandlerMapping.setInterceptors(this.getInterceptors(mvcConversionService, mvcResourceUrlProvider));
-   >     return welcomePageHandlerMapping;
+   >  WelcomePageHandlerMapping welcomePageHandlerMapping = new WelcomePageHandlerMapping(new TemplateAvailabilityProviders(applicationContext), applicationContext, this.getWelcomePage(), this.mvcProperties.getStaticPathPattern());
+   >  welcomePageHandlerMapping.setInterceptors(this.getInterceptors(mvcConversionService, mvcResourceUrlProvider));
+   >  return welcomePageHandlerMapping;
    > }
    > ```
 
@@ -1145,8 +1149,8 @@ JSP、Velocity、Freemarker、Thymeleaf
 
 > ```xml
 > <dependency>
->     <groupId>org.springframework.boot</groupId>
->     <artifactId>spring-boot-starter-thymeleaf</artifactId>
+>  <groupId>org.springframework.boot</groupId>
+>  <artifactId>spring-boot-starter-thymeleaf</artifactId>
 > </dependency>
 > ```
 
@@ -1156,27 +1160,27 @@ JSP、Velocity、Freemarker、Thymeleaf
 
 > ```java
 > ConfigurationProperties(
->     prefix = "spring.thymeleaf"
+>  prefix = "spring.thymeleaf"
 > )
 > public class ThymeleafProperties {
->     private static final Charset DEFAULT_ENCODING;
->     public static final String DEFAULT_PREFIX = "classpath:/templates/";
->     public static final String DEFAULT_SUFFIX = ".html";
->     private boolean checkTemplate = true;
->     private boolean checkTemplateLocation = true;
->     private String prefix = "classpath:/templates/";
->     private String suffix = ".html";
->     private String mode = "HTML";
->     private Charset encoding;
->     private boolean cache;
->     private Integer templateResolverOrder;
->     private String[] viewNames;
->     private String[] excludedViewNames;
->     private boolean enableSpringElCompiler;
->     private boolean renderHiddenMarkersBeforeCheckboxes;
->     private boolean enabled;
->     private final ThymeleafProperties.Servlet servlet;
->     private final ThymeleafProperties.Reactive reactive;
+>  private static final Charset DEFAULT_ENCODING;
+>  public static final String DEFAULT_PREFIX = "classpath:/templates/";
+>  public static final String DEFAULT_SUFFIX = ".html";
+>  private boolean checkTemplate = true;
+>  private boolean checkTemplateLocation = true;
+>  private String prefix = "classpath:/templates/";
+>  private String suffix = ".html";
+>  private String mode = "HTML";
+>  private Charset encoding;
+>  private boolean cache;
+>  private Integer templateResolverOrder;
+>  private String[] viewNames;
+>  private String[] excludedViewNames;
+>  private boolean enableSpringElCompiler;
+>  private boolean renderHiddenMarkersBeforeCheckboxes;
+>  private boolean enabled;
+>  private final ThymeleafProperties.Servlet servlet;
+>  private final ThymeleafProperties.Reactive reactive;
 > ```
 
 只要我们把html页面放在classpath:/templates/下， thymeleaf就可以帮我们渲染
@@ -1184,7 +1188,7 @@ JSP、Velocity、Freemarker、Thymeleaf
 > ```java
 > @RequestMapping("/success")
 > public String success(){
->     return "success";
+>  return "success";
 > }
 > ```
 
@@ -1204,13 +1208,13 @@ JSP、Velocity、Freemarker、Thymeleaf
 > <!DOCTYPE html>
 > <html lang="en" xmlns:th="http://www.thymeleaf.org">
 > <head>
->     <meta charset="UTF-8">
->     <title>Title</title>
+>  <meta charset="UTF-8">
+>  <title>Title</title>
 > </head>
 > <body>
->     <h1>成功</h1>
->     <!--th:text 将div里面的文本内容设置为**-->
->     <div th:text="${hello}">这是显示欢迎信息</div>
+>  <h1>成功</h1>
+>  <!--th:text 将div里面的文本内容设置为**-->
+>  <div th:text="${hello}">这是显示欢迎信息</div>
 > </body>
 > </html>
 > ```
@@ -1304,97 +1308,98 @@ JSP、Velocity、Freemarker、Thymeleaf
     
 
     ### 4. SpringMVC自动配置
-    
+
     #### 1. Spring MVC auto-configuration
-    
+
     https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications
-    
+
     ##### Spring MVC Auto-configuration（SpringBoot自动配置好了SpringMVC）
-    
+
     Spring Boot provides auto-configuration for Spring MVC that works well with most applications.
-    
+
     The auto-configuration adds the following features on top of Spring’s defaults:
-    
+
     以下是SpringBoot对SpringMVC的默认配置：
-    
+
     - Inclusion of `ContentNegotiatingViewResolver` and `BeanNameViewResolver` beans.（自动配置了ViewResolver[视图解析器，根据方法的返回值得到视图对象View]，视图对象决定如何渲染（转发or重定向））
-    
+
       `ContentNegotiatingViewResolver`：组合所有的视图解析器
-    
+
       如何定制视图解析器：自己给容器中添加一个视图解析器
-    
+
     - Support for serving static resources, including support for WebJars (covered [later in this document](https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/htmlsingle/#boot-features-spring-mvc-static-content))). 静态资源文件夹路径webjars
-    
+
     - Automatic registration of `Converter`, `GenericConverter`, and `Formatter` beans.
-    
+
       `Converter`：转换器：类型转换使用
-    
+
       `Formatter`：格式化器：2017-12-17===Date
-    
+
     - Support for `HttpMessageConverters` (covered [later in this document](https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/htmlsingle/#boot-features-spring-mvc-message-converters)).
-    
+
       `HttpMessageConverters`:SpringMVC用来转换http请求和响应：User---json
-    
+
       `HttpMessageConverters`是从容器中确定
-    
+
     - Automatic registration of `MessageCodesResolver` (covered [later in this document](https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/htmlsingle/#boot-features-spring-message-codes)).
-    
+
     - Static `index.html` support.静态首页访问
-    
+
     - Custom `Favicon` support (covered [later in this document](https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/htmlsingle/#boot-features-spring-mvc-favicon)).
-    
+
     - Automatic use of a `ConfigurableWebBindingInitializer` bean (covered [later in this document](https://docs.spring.io/spring-boot/docs/2.2.4.RELEASE/reference/htmlsingle/#boot-features-spring-mvc-web-binding-initializer)).
+
     
-    
-    
+
     #### 2.扩展SpringMVC
-    
+
     If you want to keep those Spring Boot MVC customizations and make more [MVC customizations](https://docs.spring.io/spring/docs/5.2.3.RELEASE/spring-framework-reference/web.html#mvc) (interceptors, formatters, view controllers, and other features), you can add your own `@Configuration` class of type `WebMvcConfigurer` but **without** `@EnableWebMvc`.
-    
+
     > ```xml
     > <mvc:view-controller path="/hello" view-name="success"></mvc:view-controller>
     > <mvc:interceptors>
-    >     <mvc:interceptor>
-    >         <mvc:mapping path="/hello"/>
-    >         <bean></bean>
-    >     </mvc:interceptor>
+    >  <mvc:interceptor>
+    >      <mvc:mapping path="/hello"/>
+    >      <bean></bean>
+    >  </mvc:interceptor>
     > </mvc:interceptors>
     > ```
-    
+
     **编写一个配置类（@Configuration），是WebMvcConfigurer，既保留了Springboot自动配置，也能用扩展的配置**
-    
+
     > ```java
     > //使用WebMvcConfigurer可以扩展
     > @Configuration
     > public class MyMvcConfig implements WebMvcConfigurer {
-    >     @Override
-    >     public void addViewControllers(ViewControllerRegistry registry) {
-    >         //浏览器发送/my， 请求来到success页面
-    >         registry.addViewController("/my").setViewName("success");
+    >  @Override
+    >  public void addViewControllers(ViewControllerRegistry registry) {
+    >      //浏览器发送/my， 请求来到success页面
+    >      registry.addViewController("/my").setViewName("success");
     > 
-    >     }
+    >  }
     > }
     > ```
-    
+
     原理：
-    
+
     	1. WebMvcAutoConfiguration是SpringMVC自动配置类
-     	2. 在做其他自动配置时会导入：@Import(EnableWebMvcConfiguration.class)
-     	3. 容器中的所有WebMvcConfigurer都会一起起作用
-     	4. 我们的配置类也会被调用
+
+       	2. 在做其他自动配置时会导入：@Import(EnableWebMvcConfiguration.class)
+                	3. 容器中的所有WebMvcConfigurer都会一起起作用
+             	4. 我们的配置类也会被调用
+
     
-    
-    
+
     #### 3. 全面接管SpringMVC
-    
+
     Springboot对SpringMVC的自动配置不需要了，所有都是我们自己配
-    
+
     在配置类中先加`@EnableWebMvc`
+
     
-    
-    
+
     If you want to provide custom instances of `RequestMappingHandlerMapping`, `RequestMappingHandlerAdapter`, or `ExceptionHandlerExceptionResolver`, and still keep the Spring Boot MVC customizations, you can declare a bean of type `WebMvcRegistrations` and use it to provide custom instances of those components.
-    
+
     If you want to take complete control of Spring MVC, you can add your own `@Configuration` annotated with `@EnableWebMvc`, or alternatively add your own `@Configuration`-annotated `DelegatingWebMvcConfiguration` as described in the Javadoc of `@EnableWebMvc`.
 
 
@@ -1407,7 +1412,7 @@ JSP、Velocity、Freemarker、Thymeleaf
 
 2.在Springboot中会有非常多的xxConfigurer帮我们进行扩展
 
-
+3.在SpringBoot中会有很多的xxxCustomizer帮助我们进行定制
 
 ### 6. RestfulCRUD
 
@@ -1417,14 +1422,14 @@ JSP、Velocity、Freemarker、Thymeleaf
 > //所有的WebMvcConfigurer都会一起起作用
 > @Bean
 > public WebMvcConfigurer webMvcConfigurer(){
->     WebMvcConfigurer configurer = new WebMvcConfigurer(){
->         @Override
->         public void addViewControllers(ViewControllerRegistry registry) {
->             registry.addViewController("/").setViewName("login");
->             registry.addViewController("/index.html").setViewName("login");
->         }
->     };
->     return configurer;
+>  WebMvcConfigurer configurer = new WebMvcConfigurer(){
+>      @Override
+>      public void addViewControllers(ViewControllerRegistry registry) {
+>          registry.addViewController("/").setViewName("login");
+>          registry.addViewController("/index.html").setViewName("login");
+>      }
+>  };
+>  return configurer;
 > }
 > ```
 
@@ -1452,50 +1457,50 @@ JSP、Velocity、Freemarker、Thymeleaf
 
 > ```java
 > @Configuration(
->     proxyBeanMethods = false
+>  proxyBeanMethods = false
 > )
 > @ConditionalOnMissingBean(
->     name = {"messageSource"},
->     search = SearchStrategy.CURRENT
+>  name = {"messageSource"},
+>  search = SearchStrategy.CURRENT
 > )
 > @AutoConfigureOrder(-2147483648)
 > @Conditional({MessageSourceAutoConfiguration.ResourceBundleCondition.class})
 > @EnableConfigurationProperties
 > public class MessageSourceAutoConfiguration {
->     private static final Resource[] NO_RESOURCES = new Resource[0];
+>  private static final Resource[] NO_RESOURCES = new Resource[0];
 > 
->     public MessageSourceAutoConfiguration() {
->     }
+>  public MessageSourceAutoConfiguration() {
+>  }
 > 
->     @Bean
->     @ConfigurationProperties(
->         prefix = "spring.messages"
->     )
->     
->     
->     @Bean
->     public MessageSource messageSource(MessageSourceProperties properties) {
->         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
->         if (StringUtils.hasText(properties.getBasename())) 
->         //设置国际化资源文件的基础名（去掉语言国家）默认为message，可以放在message.properties下
->         {
->             messageSource.setBasenames(StringUtils.commaDelimitedListToStringArray(StringUtils.trimAllWhitespace(properties.getBasename())));
->         }
+>  @Bean
+>  @ConfigurationProperties(
+>      prefix = "spring.messages"
+>  )
+>  
+>  
+>  @Bean
+>  public MessageSource messageSource(MessageSourceProperties properties) {
+>      ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+>      if (StringUtils.hasText(properties.getBasename())) 
+>      //设置国际化资源文件的基础名（去掉语言国家）默认为message，可以放在message.properties下
+>      {
+>          messageSource.setBasenames(StringUtils.commaDelimitedListToStringArray(StringUtils.trimAllWhitespace(properties.getBasename())));
+>      }
 > 
->         if (properties.getEncoding() != null) {
->             messageSource.setDefaultEncoding(properties.getEncoding().name());
->         }
+>      if (properties.getEncoding() != null) {
+>          messageSource.setDefaultEncoding(properties.getEncoding().name());
+>      }
 > 
->         messageSource.setFallbackToSystemLocale(properties.isFallbackToSystemLocale());
->         Duration cacheDuration = properties.getCacheDuration();
->         if (cacheDuration != null) {
->             messageSource.setCacheMillis(cacheDuration.toMillis());
->         }
+>      messageSource.setFallbackToSystemLocale(properties.isFallbackToSystemLocale());
+>      Duration cacheDuration = properties.getCacheDuration();
+>      if (cacheDuration != null) {
+>          messageSource.setCacheMillis(cacheDuration.toMillis());
+>      }
 > 
->         messageSource.setAlwaysUseMessageFormat(properties.isAlwaysUseMessageFormat());
->         messageSource.setUseCodeAsDefaultMessage(properties.isUseCodeAsDefaultMessage());
->         return messageSource;
->     }
+>      messageSource.setAlwaysUseMessageFormat(properties.isAlwaysUseMessageFormat());
+>      messageSource.setUseCodeAsDefaultMessage(properties.isUseCodeAsDefaultMessage());
+>      return messageSource;
+>  }
 > 
 > ```
 
@@ -1552,17 +1557,17 @@ JSP、Velocity、Freemarker、Thymeleaf
 > @Bean
 > @ConditionalOnMissingBean
 > @ConditionalOnProperty(
->     prefix = "spring.mvc",
->     name = {"locale"}
+>  prefix = "spring.mvc",
+>  name = {"locale"}
 > )
 > public LocaleResolver localeResolver() {
->     if (this.mvcProperties.getLocaleResolver() == org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties.LocaleResolver.FIXED) {
->         return new FixedLocaleResolver(this.mvcProperties.getLocale());
->     } else {
->         AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();
->         localeResolver.setDefaultLocale(this.mvcProperties.getLocale());
->         return localeResolver;
->     }
+>  if (this.mvcProperties.getLocaleResolver() == org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties.LocaleResolver.FIXED) {
+>      return new FixedLocaleResolver(this.mvcProperties.getLocale());
+>  } else {
+>      AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();
+>      localeResolver.setDefaultLocale(this.mvcProperties.getLocale());
+>      return localeResolver;
+>  }
 > }
 > ```
 >
@@ -1574,30 +1579,30 @@ JSP、Velocity、Freemarker、Thymeleaf
 
    > ```java
    > public class MyLocaleResolver implements LocaleResolver {
-   >     @Override
-   >     public Locale resolveLocale(HttpServletRequest httpServletRequest) {
-   >         String l = httpServletRequest.getParameter("l");
-   >         Locale locale = Locale.getDefault();
-   >         if(!StringUtils.isEmpty(l)){
-   >             String[] split = l.split("_");
-   >             locale = new Locale(split[0],split[1]);
+   >  @Override
+   >  public Locale resolveLocale(HttpServletRequest httpServletRequest) {
+   >      String l = httpServletRequest.getParameter("l");
+   >      Locale locale = Locale.getDefault();
+   >      if(!StringUtils.isEmpty(l)){
+   >          String[] split = l.split("_");
+   >          locale = new Locale(split[0],split[1]);
    > 
-   >         }
-   >         return locale;
-   >     }
+   >      }
+   >      return locale;
+   >  }
    > 
-   >     @Override
-   >     public void setLocale(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Locale locale) {
+   >  @Override
+   >  public void setLocale(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Locale locale) {
    > 
-   >     }
+   >  }
    > }
    > 
    > MyMvcConfig.java下：
-   >     @Bean
-   >     public LocaleResolver localeResolver(){
-   >         return new MyLocaleResolver();
+   >  @Bean
+   >  public LocaleResolver localeResolver(){
+   >      return new MyLocaleResolver();
    > 
-   >     }
+   >  }
    > ```
 
 #### 3. 登录
@@ -1612,20 +1617,20 @@ JSP、Velocity、Freemarker、Thymeleaf
 > @Controller
 > public class LoginController {
 > 
->     @PostMapping(value = "/user/login")
->     //@RequestMapping(value = "/user/login", method = RequestMethod.POST)
->     public String login(@RequestParam("username") String username,
->                         @RequestParam("password") String password,
->                         Map<String, Object> map){
->         if(!StringUtils.isEmpty(username) && "123456".equals(password)){
->             return "dashboard"; //登录成功
->         }else{
->             //登录失败
->             map.put("msg", "用户名密码错误");
->             return "login";
->         }
+>  @PostMapping(value = "/user/login")
+>  //@RequestMapping(value = "/user/login", method = RequestMethod.POST)
+>  public String login(@RequestParam("username") String username,
+>                      @RequestParam("password") String password,
+>                      Map<String, Object> map){
+>      if(!StringUtils.isEmpty(username) && "123456".equals(password)){
+>          return "dashboard"; //登录成功
+>      }else{
+>          //登录失败
+>          map.put("msg", "用户名密码错误");
+>          return "login";
+>      }
 > 
->     }
+>  }
 > }
 > ```
 
@@ -1644,9 +1649,9 @@ JSP、Velocity、Freemarker、Thymeleaf
 > ```java
 > @Override
 > public void addInterceptors(InterceptorRegistry registry) {
->     //静态资源：*css, *js不需要管，SpringBoot已经做好静态资源映射
->     registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
->             .excludePathPatterns("/index.html","/","/user/login","/assert/css/**","/webjars/**");
+>  //静态资源：*css, *js不需要管，SpringBoot已经做好静态资源映射
+>  registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+>          .excludePathPatterns("/index.html","/","/user/login","/assert/css/**","/webjars/**");
 > }
 > ```
 
@@ -1683,19 +1688,19 @@ JSP、Velocity、Freemarker、Thymeleaf
 > @Controller
 > public class EmployeeController {
 > 
->     @Autowired
->     EmployeeDao employeeDao;
+>  @Autowired
+>  EmployeeDao employeeDao;
 > 
->     //查询所有员工返回列表页面
->     @GetMapping("/emps")
->     public String list(Model model){
->         Collection<Employee> employees = employeeDao.getAll();
+>  //查询所有员工返回列表页面
+>  @GetMapping("/emps")
+>  public String list(Model model){
+>      Collection<Employee> employees = employeeDao.getAll();
 > 
->         //放在请求域中
->         model.addAttribute("emps", employees);
+>      //放在请求域中
+>      model.addAttribute("emps", employees);
 > 
->         return "emp/list";
->     }
+>      return "emp/list";
+>  }
 > 
 > }
 > ```
@@ -2075,7 +2080,6 @@ public class MyExceptionHandler {
 ​	2）转发到/error进行自适应响应
 
 ```java
-
     @ResponseBody
     @ExceptionHandler(UserNotExitException.class)
     public String handleException(Exception e){
@@ -2126,3 +2130,244 @@ public class MyErrorAttributes extends DefaultErrorAttributes {
 ```
 
 **最终效果**：响应是自适应的，可以通过定制ErrorAttributes改变需要返回的内容
+
+
+
+### 8. 配置嵌入式Servlet容器
+
+#### 1）嵌入式Tomcat
+
+SpringBoot默认是用的是嵌入的Servlet容器（Tomcat）：
+
+![image-20200301153149025](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20200301153149025.png)
+
+使用嵌入式的问题： 
+
+​	1）如何定制和修改Servlet容器的相关配置
+
+- 修改和server有关的配置（ServerProperties）
+
+  ```properties
+  server.servlet.context-path=/crud
+  
+  server.tomcat.uri-encoding=utf-8
+  
+  //通用的Servlet容器设置：server.xxx
+  //Tomcat的设置：server.tomcat.xx
+  ```
+
+- 编写一个**WebServerFactoryCustomizer**:嵌入式的Servlet容器的定制器来修改Servlet容器的配置
+
+  ```java
+      @Bean
+      public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer(){
+          return new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {
+              @Override
+              public void customize(ConfigurableWebServerFactory factory) {
+                  factory.setPort(8083);
+              }
+          };
+      }
+  ```
+
+​	
+
+#### 2）注册Servlet三大组件【Servlet、Filter、Listener】
+
+由于SpringBoot默认是以jar包的方式启动嵌入式的servlet容器来启动web应用，没有web.xml文件
+
+因此注册三大组件用以下方式：
+
+**ServletRegistrationBean**
+
+```java
+@Bean
+public ServletRegistrationBean myServlet(){
+    ServletRegistrationBean<Servlet> servletServletRegistrationBean = new ServletRegistrationBean<>(new MyServlet(), "/myServlet");
+    return servletServletRegistrationBean;
+}
+```
+
+**FilterRegistrationBean**
+
+```java
+@Bean
+public FilterRegistrationBean myFilter(){
+    FilterRegistrationBean<Filter> filterFilterRegistrationBean = new FilterRegistrationBean<>();
+    filterFilterRegistrationBean.setFilter(new Myfilter());
+    filterFilterRegistrationBean.setUrlPatterns(Arrays.asList("/hello", "/myServlet"));
+
+    return filterFilterRegistrationBean;
+}
+```
+
+**ServletListenerRegistrationBean**
+
+```java
+@Bean
+public ServletListenerRegistrationBean myListener(){
+    ServletListenerRegistrationBean<MyListener> myListenerServletListenerRegistrationBean = new ServletListenerRegistrationBean<>(new MyListener());
+    return myListenerServletListenerRegistrationBean;
+}
+```
+
+SpringBoot帮我们自动配置SpringMVC的时候，自动地注册SpringMVC前端控制器
+
+2）SpringBoot能不能支持其他的Servlet容器
+
+
+
+
+
+# 六. SpringBoot与数据访问
+
+## 1.JDBC
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-jdbc</artifactId>
+</dependency>
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <scope>runtime</scope>
+</dependency>
+```
+
+```properties
+spring.datasource.username=root
+spring.datasource.password=123456
+spring.datasource.url=jdbc:mysql://localhost:3306/jdbc
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+```
+
+效果：
+
+​	默认是使用class com.zaxxer.hikari.HikariDataSource数据源
+
+​	数据源的相关配置都在DataSourceProperties里
+
+自动配置原理：
+
+在\org\springframework\boot\autoconfigure\jdbc下：
+
+1.参考DataSourceConfiguration，根据配置创建数据源，默认使用Tomcat连接池，可以使用spring.datasource.type指定自定义的数据源类型
+
+2.SpringBoot默认可以支持：
+
+​	tomcat-jdbc、 hikari-jdbc、BasicDataSource
+
+3.也可以自定义
+
+4.可以执行建表语句、插入数据语句：
+
+```properties
+spring.datasource.initialization-mode=always
+spring.datasource.schema=classpath:schema-all.sql
+```
+
+5.操作数据库：
+
+​	注入jdbcTemplates
+
+## 2.整合druid
+
+导入druid数据源
+@Configuration
+public class DruidConfig {
+
+```java
+@ConfigurationProperties(prefix = "spring.datasource")
+@Bean
+public DataSource druid(){
+   return  new DruidDataSource();
+}
+
+//配置Druid的监控
+//1、配置一个管理后台的Servlet
+@Bean
+public ServletRegistrationBean statViewServlet(){
+    ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
+    Map<String,String> initParams = new HashMap<>();
+
+    initParams.put("loginUsername","admin");
+    initParams.put("loginPassword","123456");
+    initParams.put("allow","");//默认就是允许所有访问
+    initParams.put("deny","192.168.15.21");
+
+    bean.setInitParameters(initParams);
+    return bean;
+}
+```
+
+
+```java
+//2、配置一个web监控的filter
+@Bean
+    public FilterRegistrationBean webStatFilter(){
+        FilterRegistrationBean bean = new FilterRegistrationBean();
+        bean.setFilter(new WebStatFilter());
+
+        Map<String,String> initParams = new HashMap<>();
+        initParams.put("exclusions","*.js,*.css,/druid/*");
+
+        bean.setInitParameters(initParams);
+
+        bean.setUrlPatterns(Arrays.asList("/*"));
+
+        return  bean;
+    }
+}
+```
+
+
+## 3. 整合MyBatis
+
+```xml
+<dependency>
+    <groupId>org.mybatis.spring.boot</groupId>
+    <artifactId>mybatis-spring-boot-starter</artifactId>
+    <version>2.1.1</version>
+</dependency>
+```
+
+  步骤：
+
+	1. 配置数据源相关属性（druid）
+ 	2. 给数据库建表
+ 	3. 创建JavaBean
+
+
+
+### 1.注解版Mybatis：
+
+```java
+@Mapper //指定这是一个操作数据库的mapper
+public interface DepartmentMapper {
+
+    @Select("select * from department where id=#{id}")
+    public Department getDeptById(Integer id);
+
+    @Delete("delete from department where id=#{id}")
+    public int deleteDeptById(Integer id);
+	
+    @Options(useGeneratedKeys = true, keyProperty = "id")//设置显示自增主键
+    @Insert("insert into department(departmentName) values(#{departmentName})")
+    public int insertDept(Department department);
+
+    @Update("update department set departmentName = #{departmentName} where id=#{id}")
+    public int updateDept(Department department);
+}
+```
+
+
+
+### 2.配置文件版Mybatis:
+
+```yml
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml 指定全局配置文件的位置
+  mapper-locations: classpath:mybatis/mapper/*.xml 指定sql映射文件的位置
+```
+

@@ -1,0 +1,11 @@
+2020-02-16 17:18:23.309  INFO 14404 --- [main] .m.s.SpringBoot03LoggingApplicationTests : Starting SpringBoot03LoggingApplicationTests on DESKTOP-VNU076O with PID 14404 (started by DELL in F:\J2EE\springboot\spring-boot-03-logging)
+2020-02-16 17:18:23.310 DEBUG 14404 --- [main] .m.s.SpringBoot03LoggingApplicationTests : Running with Spring Boot v2.2.4.RELEASE, Spring v5.2.3.RELEASE
+2020-02-16 17:18:23.314  INFO 14404 --- [main] .m.s.SpringBoot03LoggingApplicationTests : No active profile set, falling back to default profiles: default
+2020-02-16 17:18:25.400  INFO 14404 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-02-16 17:18:25.923  INFO 14404 --- [main] .m.s.SpringBoot03LoggingApplicationTests : Started SpringBoot03LoggingApplicationTests in 3.395 seconds (JVM running for 4.936)
+2020-02-16 17:18:26.551 TRACE 14404 --- [main] .m.s.SpringBoot03LoggingApplicationTests : 这是trace日志
+2020-02-16 17:18:26.553 DEBUG 14404 --- [main] .m.s.SpringBoot03LoggingApplicationTests : 这是debug日志
+2020-02-16 17:18:26.553  INFO 14404 --- [main] .m.s.SpringBoot03LoggingApplicationTests : 这是info日志
+2020-02-16 17:18:26.555  WARN 14404 --- [main] .m.s.SpringBoot03LoggingApplicationTests : 这是warn日志
+2020-02-16 17:18:26.555 ERROR 14404 --- [main] .m.s.SpringBoot03LoggingApplicationTests : 这是error日志
+2020-02-16 17:18:26.614  INFO 14404 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
